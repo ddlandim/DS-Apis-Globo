@@ -22,7 +22,8 @@ class test_functions(unittest.TestCase):
         assert equal_arrays
 
     def test_df_predicted_audience(self):
-        df_test = pd.read_csv('../Data/tvaberta_program_audience(1)_test.csv')
+        df_test = pd.read_csv('./Data/tvaberta_program_audience(1)_test.csv')
+        df_test['predicted_audience'] = -1
         np_assert = np.array([1, 1, 1, 1.5, 2.5, 3.5, 4.5, 5.5, 1, 10, 1, 1, 1, 1.5, 5, 5, 5])
         np_test = np.array(functions.df_predicted_audience(df_test)['predicted_audience'].values)
         comparison = np_assert == np_test

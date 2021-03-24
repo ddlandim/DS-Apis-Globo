@@ -1,0 +1,144 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Globo: Api de Anuncios
+  contact: {}
+host: 127.0.0.1:5000
+basePath: /
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /get_period:
+    get:
+      description: Método que retorna os programas, tempo previsto e tempo disponível para anuncios em um determinado período fornecido
+      summary: obterPeriodo
+      tags:
+      - Misc
+      operationId: obterPeriodo
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: begin
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: end
+        in: query
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/obterPeriodo'
+          examples:
+            application/json:
+            - available_time: -1
+              predicted_audience: 933891.963855422
+              program_code: PTV1
+            - available_time: -1
+              predicted_audience: 1835375.01149425
+              program_code: VALE
+          headers:
+            Content-Length:
+              type: string
+              default: '621899'
+            Server:
+              type: string
+              default: Werkzeug/0.16.1 Python/3.6.12
+            Date:
+              type: string
+              default: Wed, 24 Mar 2021 14:21:55 GMT
+  /get_predicted:
+    get:
+      description: Método que retorna uma estimativa de audiência e o tempo disponível para anuncios, para um determinado programa e data de exibição
+      summary: obterPrograma
+      tags:
+      - Misc
+      operationId: obterPrograma
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: program_code
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: date
+        in: query
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/obterPrograma'
+          examples:
+            application/json:
+            - available_time: -1
+              predicted_audience: 933891.963855422
+            - available_time: -1
+              predicted_audience: 211398.807228916
+          headers:
+            Content-Length:
+              type: string
+              default: '489'
+            Server:
+              type: string
+              default: Werkzeug/0.16.1 Python/3.6.12
+            Date:
+              type: string
+              default: Wed, 24 Mar 2021 14:22:54 GMT
+definitions:
+  obterPeriodo:
+    title: obterPeriodo
+    example:
+      available_time: -1
+      predicted_audience: 933891.963855422
+      program_code: PTV1
+    type: object
+    properties:
+      available_time:
+        type: integer
+        format: int32
+      predicted_audience:
+        type: number
+        format: double
+      program_code:
+        type: string
+    required:
+    - available_time
+    - predicted_audience
+    - program_code
+  obterPrograma:
+    title: obterPrograma
+    example:
+      available_time: -1
+      predicted_audience: 933891.963855422
+    type: object
+    properties:
+      available_time:
+        type: integer
+        format: int32
+      predicted_audience:
+        type: number
+        format: double
+    required:
+    - available_time
+    - predicted_audience
+tags:
+- name: Misc
+  description: ''

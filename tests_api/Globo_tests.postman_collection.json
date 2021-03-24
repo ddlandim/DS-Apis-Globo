@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "17d24401-e48a-4439-bb8a-d8ac8771d119",
+		"name": "Globo_tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "obterPeriodo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{flask_url}}/get_period?begin={{begin}}&end={{end}}",
+					"host": [
+						"{{flask_url}}"
+					],
+					"path": [
+						"get_period"
+					],
+					"query": [
+						{
+							"key": "begin",
+							"value": "{{begin}}"
+						},
+						{
+							"key": "end",
+							"value": "{{end}}"
+						}
+					]
+				},
+				"description": "Método que retorna os programas, tempo previsto e tempo disponível para anuncios em um determinado período fornecido"
+			},
+			"response": []
+		},
+		{
+			"name": "obterPrograma",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{flask_url}}/get_predicted?program_code={{program_code}}&date={{date}}",
+					"host": [
+						"{{flask_url}}"
+					],
+					"path": [
+						"get_predicted"
+					],
+					"query": [
+						{
+							"key": "program_code",
+							"value": "{{program_code}}"
+						},
+						{
+							"key": "date",
+							"value": "{{date}}"
+						}
+					]
+				},
+				"description": "Método que retorna uma estimativa de audiência e o tempo disponível para anuncios, para um determinado programa e data de exibição"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.iterationData.get(\"program_code\");",
+					"pm.iterationData.get(\"date\");",
+					"pm.iterationData.get(\"begin\");",
+					"pm.iterationData.get(\"end\");",
+					"pm.iterationData.get(\"message\");",
+					"pm.iterationData.get(\"skip\");",
+					"",
+					"var skips = pm.variables.get(\"skip\").split(',');",
+					"//skips = skips.split(',');",
+					"",
+					"pm.variables.set(\"skips\",skips);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"var skips = pm.variables.get(\"skips\")",
+					"if(skips.indexOf(pm.info.requestName) >= 0 ){",
+					"    console.log(\"Skipped\")",
+					"}",
+					"else{",
+					"    pm.test(pm.variables.get(\"message\"),function(){",
+					"        pm.response.to.have.status(pm.variables.get(\"code\"));",
+					"    })",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "flask_url",
+			"value": "http://127.0.0.1:5000"
+		}
+	]
+}

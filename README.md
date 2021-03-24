@@ -69,7 +69,7 @@ A API em execução tem as seguintes 2 rotas de requisição.
 
 - GET ​/get_program : obterPeriodo
   Método que retorna uma estimativa de audiência e o tempo disponível para anuncios, para um determinado programa e data de exibição
-  - Parâmetros:
+  - Parâmetros: 
     - program_code  : Formato string
     - date : Formato date yyyy-mm-dd
 

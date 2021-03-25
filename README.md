@@ -40,7 +40,7 @@ Este projeto consiste no desenvolvimento de um script de proprocessamento de dad
 ## Criticidade
 - Media: Caso esta API falhe, processos de b.i e modelos estimativos podem ser bloqueados. 
 
-- Prioritária: A API deve esta sempre ativa e disponível, o pro=e
+- Prioritária: O processamento dos dados de origem tem agendamento de uma execução diária, a API de consultas aos dados resultantes deve estar sempre ativa e disponível para outros processos.
 
 # Requisitos
 Requisitos necessários para o desenvolvimento e execução da API.
@@ -160,11 +160,15 @@ ID do Artefato | Nome do Artefato | Ferramenta | Link do Artefato | Tipo | Vers�
 # Release Notes
 ## 24/03/2020
 ### 1.0 
+
+Requisito funcional P2 não atendido:
+
 Primeira versão da API pronta para execução, porém os artefatos 1 e 2 estão com intervalos temporais distintos não sendo possível mesclar a informação de audiência prevista e tempo disponível de anúncio em um mesmo registro.  
 Portanto o conjunto de dados resultados gerenciado pelo artefato 10 para as resquisições, conterá falha de audiência estimada ou tempo alocado para anuncios de acordo com data solicitada de um registro.
 
 # Referencias
-- Dependência E1: https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html
+- Dependência E1:  
+  https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html
 - Dependência E2:  
   https://docs.npmjs.com/creating-a-package-json-file
 - Artefato 10: API  

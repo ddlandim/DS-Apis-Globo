@@ -40,7 +40,7 @@ Este projeto consiste no desenvolvimento de um script de proprocessamento de dad
 ## Criticidade
 - Media: Caso esta API falhe, processos de b.i e modelos estimativos podem ser bloqueados. 
 
-- Prioritária: A API deve esta sempre ativa e disponível.
+- Prioritária: A API deve esta sempre ativa e disponível, o pro=e
 
 # Requisitos
 Requisitos necessários para o desenvolvimento e execução da API.

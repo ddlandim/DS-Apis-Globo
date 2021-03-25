@@ -95,7 +95,15 @@ $ npm run conda_env
 ## Ativação do ambiente python
 Este comando ativa o ambiente instalado na etapa anterior
 ```
+$ conda activate ./env
+```
+ou
+```
 $ npm run conda_act
+```
+para encerrar o ambiente:
+```
+$ conda deactivate
 ```
 ## Testes unitários do código python de processamento
 Este comando executa o script python de testes unitários das funções de carregamento dos conjuntos de dados e da função de calculo da mediana

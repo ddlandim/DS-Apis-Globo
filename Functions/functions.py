@@ -20,7 +20,7 @@ def read_inv(file_inv):
 
 
 ## Funcao para carregar o arquivo de dados de media historica de anuncios
-def read_pro(file_pro):
+def read_pro(file_pro, preserve = True):
     #file_pro = '../Data/tvaberta_program_audience(1).csv'
     dateparser_pro = lambda x: datetime.strptime(x, "%Y-%m-%dT%H:%M:%S.%fZ")
     sep_pro = ','
@@ -37,7 +37,8 @@ def read_pro(file_pro):
     df_pro['predicted_audience'] = -1
     # valores de tempo estimado inicializados com -1, caso alguma requisicao retorne com -1 em tempo estimado significa que a data do registro correspondeu apenas à este conjunto df_pro.
     df_pro['available_time'] = -1
-    del df_pro['program_start_time']
+    if not preserve:
+        del df_pro['program_start_time']
     return df_pro
 
 ## Calculo da mediana que recebe como parametro um pandas dataframe, uma coluna alvo de calculo e uma janela temporal de calculo.

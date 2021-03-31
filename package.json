@@ -7,7 +7,7 @@
 		"url": ""
 	},
 	"scripts": {
-		"conda_env": "conda create --prefix ./env flask pandas numpy jupyter",
+		"conda_env": "conda create --prefix ./env flask pandas numpy jupyter keras seaborn",
 		"conda_act": "conda activate ./env",
 		"newman": "newman run ./tests_api/Globo_tests.postman_collection.json -d ./tests_api/Datas.postman_scenario.csv",
 		"pytest": "python ./Functions/test_functions.py",

@@ -2,3 +2,5 @@
 env/
 
 node_modules/
+
+bkp_env/

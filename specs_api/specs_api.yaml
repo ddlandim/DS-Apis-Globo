@@ -1,8 +1,7 @@
 swagger: '2.0'
 info:
   version: '1.0'
-  title: Globo: Api de Anuncios
-  contact: {}
+  title: "Globo INV APIS" 
 host: 127.0.0.1:5000
 basePath: /
 schemes:
